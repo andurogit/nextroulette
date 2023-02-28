@@ -33,6 +33,12 @@ import {
 
 import { PointerProps, WheelData } from "./types/types";
 
+// const WebFont = dynamic(() => import("webfontloader"), {
+//   ssr: false,
+// });
+
+// example 에 wheel 이였네??? 아뉜데 맞는데
+
 interface Props {
   mustStartSpinning: boolean;
   prizeNumber: number;
