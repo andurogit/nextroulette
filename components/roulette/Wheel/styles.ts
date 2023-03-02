@@ -11,6 +11,14 @@ interface IRotationContainerProps {
   finalRotationDegrees: number;
 }
 
+export const RoulettePointerImage = styled(NonDraggableImage)`
+  position: absolute;
+  z-index: 5;
+  // width: 17%;
+  right: 6px;
+  top: 15px;
+`;
+
 export const RouletteContainer = styled.div`
   position: relative;
   width: 80vw;
@@ -74,12 +82,4 @@ export const RotationContainer = styled.div<IRotationContainerProps>`
       transform: rotate(${(props) => 1440 + props.finalRotationDegrees}deg);
     }
   }
-`;
-
-export const RoulettePointerImage = styled(NonDraggableImage)`
-  position: absolute;
-  z-index: 5;
-  width: 17%;
-  right: 6px;
-  top: 15px;
 `;

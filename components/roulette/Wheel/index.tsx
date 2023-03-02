@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import WebFont from "webfontloader";
 import WheelCanvas from "../WheelCanvas";
 
-import { roulettePointer } from "../common/images";
+// import { roulettePointer } from "../common/images.js";
 
 import {
   RotationContainer,
@@ -32,6 +32,7 @@ import {
 } from "./types/constTypes";
 
 import { PointerProps, WheelData } from "./types/types";
+import Image from "next/image";
 
 // const WebFont = dynamic(() => import("webfontloader"), {
 //   ssr: false,
@@ -143,26 +144,26 @@ export const Wheel = ({
       for (let j = 0; j < (wheelDataAux[i].optionSize || 1); j++) {
         auxPrizeMap[i][j] = initialMapNum++;
       }
-      if (data[i].image) {
-        setTotalImages((prevCounter) => prevCounter + 1);
+      // if (data[i].image) {
+      //   setTotalImages((prevCounter) => prevCounter + 1);
 
-        const img = new Image();
-        img.src = data[i].image?.uri || "";
-        img.onload = () => {
-          img.height = 200 * (data[i].image?.sizeMultiplier || 1);
-          img.width = (img.naturalWidth / img.naturalHeight) * img.height;
-          wheelDataAux[i].image = {
-            uri: data[i].image?.uri || "",
-            offsetX: data[i].image?.offsetX || 0,
-            offsetY: data[i].image?.offsetY || 0,
-            landscape: data[i].image?.landscape || false,
-            sizeMultiplier: data[i].image?.sizeMultiplier || 1,
-            _imageHTML: img,
-          };
-          setLoadedImagesCounter((prevCounter) => prevCounter + 1);
-          setRouletteUpdater((prevState) => !prevState);
-        };
-      }
+      //   const img = new Image();
+      //   img.src = data[i].image?.uri || "";
+      //   img.onload = () => {
+      //     img.height = 200 * (data[i].image?.sizeMultiplier || 1);
+      //     img.width = (img.naturalWidth / img.naturalHeight) * img.height;
+      //     wheelDataAux[i].image = {
+      //       uri: data[i].image?.uri || "",
+      //       offsetX: data[i].image?.offsetX || 0,
+      //       offsetY: data[i].image?.offsetY || 0,
+      //       landscape: data[i].image?.landscape || false,
+      //       sizeMultiplier: data[i].image?.sizeMultiplier || 1,
+      //       _imageHTML: img,
+      //     };
+      //     setLoadedImagesCounter((prevCounter) => prevCounter + 1);
+      //     setRouletteUpdater((prevState) => !prevState);
+      //   };
+      // }
     }
 
     if (fontsToFetch.length > 0) {
@@ -288,10 +289,16 @@ export const Wheel = ({
           textDistance={textDistance}
         />
       </RotationContainer>
-      <RoulettePointerImage
+      {/* <RoulettePointerImage
         style={pointerProps?.style}
         src={pointerProps?.src || roulettePointer.src}
         alt="roulette-static"
+      /> */}
+      <RoulettePointerImage
+        src="/roulette-pointer.png"
+        alt="roulettePointer"
+        width={60}
+        height={60}
       />
     </RouletteContainer>
   );

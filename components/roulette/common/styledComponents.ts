@@ -1,6 +1,7 @@
 import styled from "styled-components";
-
-export const NonDraggableImage = styled.img`
+import Image from "next/image";
+// styled.img
+export const NonDraggableImage = styled(Image)`
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;

@@ -10,6 +10,20 @@ interface RouletteProps {
   data: Option[];
 }
 
+const backgroundColors = ["#ff8f43", "#70bbe0", "#0b3351", "#f9dd50"];
+const textColors = ["#0b3351"];
+const outerBorderColor = "#eeeeee";
+const outerBorderWidth = 10;
+const innerBorderColor = "#30261a";
+const innerBorderWidth = 0;
+const innerRadius = 0;
+const radiusLineColor = "#eeeeee";
+const radiusLineWidth = 8;
+const fontFamily = "Nunito";
+const fontSize = 20;
+const textDistance = 60;
+const spinDuration = 1.0;
+
 const Roulette: React.FC<RouletteProps> = ({ data }) => {
   const [mustSpin, setMustSpin] = useState<boolean>(false);
   const [prizeNumber, setPrizeNumber] = useState<number>(0);
@@ -57,6 +71,7 @@ const Roulette: React.FC<RouletteProps> = ({ data }) => {
           outerBorderWidth={9}
           radiusLineColor={"tranparent"}
           radiusLineWidth={1}
+          fontFamily={fontFamily}
           textColors={["#f5f5f5"]}
           textDistance={55}
           fontSize={10}
