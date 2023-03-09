@@ -74,7 +74,7 @@ const Roulette: React.FC<RouletteProps> = ({ data }) => {
           fontFamily={fontFamily}
           textColors={["#f5f5f5"]}
           textDistance={55}
-          fontSize={10}
+          fontSize={20}
           backgroundColors={[
             "#3f297e",
             "#175fa9",

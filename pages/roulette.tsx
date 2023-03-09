@@ -86,12 +86,6 @@ function RouletteCust() {
       </div>
       <Roulette data={inputList} />
       <DraggableCustom inputList={inputList} setInputList={setInputList} />
-      <button
-        onClick={handleAddClick}
-        style={{ marginLeft: "2.1rem" }}
-        className={styles["button"]}
-      />
-      <BiPlus />
     </div>
   );
 }
