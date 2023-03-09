@@ -93,12 +93,12 @@ const Roulette: React.FC<RouletteProps> = ({ data }) => {
             setMustSpin(false);
           }}
         />
-        <button
+        {/* <button
           className={styles["button roulette-button"]}
           onClick={handleSpinClick}
         >
-          돌려🚀
-        </button>
+          돌려요🚀
+        </button> */}
       </div>
       <br />
       <button
@@ -106,7 +106,7 @@ const Roulette: React.FC<RouletteProps> = ({ data }) => {
         onClick={handleSpinClick}
         disabled={mustSpin}
       >
-        {!mustSpin ? rouletteData[prizeNumber].completeOption : "돌리는 중..."}
+        {!mustSpin ? "돌려요🚀" : "돌리는 중😍😍..."}
       </button>
     </>
   );

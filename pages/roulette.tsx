@@ -28,31 +28,27 @@ function RouletteCust() {
   const [inputList, setInputList] = useState<InputItem[]>([
     {
       id: uuidv4(),
-      text: "홍콩반점",
+      text: "중국집",
     },
     {
       id: uuidv4(),
-      text: "참진-돈가스",
+      text: "돈가스",
     },
     {
       id: uuidv4(),
-      text: "진룽마라탕",
+      text: "마라탕",
     },
     {
       id: uuidv4(),
-      text: "규동",
+      text: "국밥",
     },
     {
       id: uuidv4(),
-      text: "수라멘(송파)",
+      text: "라멘",
     },
     {
       id: uuidv4(),
-      text: "필라멘(가락)",
-    },
-    {
-      id: uuidv4(),
-      text: "닭칼국수",
+      text: "칼국수",
     },
   ]);
 
