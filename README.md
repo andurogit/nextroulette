@@ -39,7 +39,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## installed
 
+npm install styled-components
+npm install -d @types/styled-components
+
 npm install uuid
 npm install @types/uuid
+
 npm install react-beautiful-dnd
 npm install @types/react-beautiful-dnd
+
+## Error Fix
+
+DraggableContext
+
+required : DraggableContext into Droppable into Draggable
