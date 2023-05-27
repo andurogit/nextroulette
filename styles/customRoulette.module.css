@@ -128,6 +128,41 @@
   );
 }
 
+
+.delete-btn {
+  border: 1px solid #dcdcdc;
+  padding: 8px 12px;
+  border-radius: 0.5rem;
+  color: #fff;
+  max-width: 450px;
+  margin: 0 auto;
+  cursor: pointer;
+  background: #7eb62e;
+  background: rgb(35, 155, 99);
+  background: linear-gradient(
+    0deg,
+    rgba(35, 155, 99, 1) 0%,
+    rgba(205 40 32) 100%
+  );
+}
+
+.add-btn {
+  border: 1px solid #dcdcdc;
+  padding: 8px 12px;
+  border-radius: 0.5rem;
+  color: #fff;
+  max-width: 450px;
+  margin: 0 auto;
+  cursor: pointer;
+  background: #7eb62e;
+  background: rgb(35, 155, 99);
+  background: linear-gradient(
+    0deg,
+    rgba(35, 155, 99, 1) 0%,
+    rgba(176 49 149, 1) 100%
+  );
+}
+
 .roulette-container {
   position: relative;
   width: 100%;
