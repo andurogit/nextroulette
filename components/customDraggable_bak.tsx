@@ -7,7 +7,6 @@ import {
 import { BiGridVertical, BiTrash, BiPlus } from "react-icons/bi";
 import styles from "../styles/customRoulette.module.css";
 import { v4 as uuidv4 } from "uuid";
-import { useEffect } from "react";
 
 interface InputItem {
   [key: string]: string;
@@ -20,29 +19,8 @@ interface DraggableProps {
   setInputList: React.Dispatch<React.SetStateAction<InputItem[]>>;
 }
 
-// uuid 중복 검사
-const generatedUniqueUUID = () => {
-  let uuid;
-  const items = localStorage.getItem("items");
-  if (items !== null) {
-    do {
-      uuid = uuidv4();
-    } while (items.includes(uuid));
-  } else {
-    uuid = uuidv4();
-  }
-
-  return uuid;
-};
-
 const DraggableCustom: React.FC<DraggableProps> = (props) => {
   const { inputList, setInputList } = props;
-
-  // 데이터 저장
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(inputList));
-  }, [inputList]);
-
   const handleOnDragEnd = (result: DragUpdate) => {
     if (!result.destination) return;
 
@@ -54,41 +32,26 @@ const DraggableCustom: React.FC<DraggableProps> = (props) => {
   };
 
   // handle click event of the Remove button
-  // const handleRemoveClick = (index: number) => {
-  //   const list = [...inputList];
-  //   list.splice(index, 1);
-  //   setInputList(list);
-  // };
+  const handleRemoveClick = (index: number) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    // list 에 넣기
-    setInputList([...inputList, { text: "", id: generatedUniqueUUID() }]);
+    setInputList([...inputList, { text: "", id: uuidv4() }]);
   };
 
   // handle input change
-  // const handleInputChange = (
-  //   e: React.ChangeEvent<HTMLInputElement>,
-  //   index: number
-  // ) => {
-  //   const { name, value } = e.target;
-  //   const list = [...inputList];
-  //   list[index][name] = value;
-  //   setInputList(list);
-  // };
-
-  // 데이터 업데이트
-  const updateItem = (id: string, newText: string) => {
-    const updatedItems = inputList.map((item) =>
-      item.id === id ? { ...item, text: newText } : item
-    );
-    setInputList(updatedItems);
-  };
-
-  // 데이터 삭제
-  const deleteItem = (id: string) => {
-    const updatedItems = inputList.filter((item) => item.id !== id);
-    setInputList(updatedItems);
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
   };
 
   return (
@@ -119,9 +82,7 @@ const DraggableCustom: React.FC<DraggableProps> = (props) => {
                             name="text"
                             placeholder="항목을 입력하세요 ( 입력하지 않음 )"
                             value={item.text}
-                            onChange={(e) =>
-                              updateItem(item.id, e.target.value)
-                            }
+                            onChange={(e) => handleInputChange(e, index)}
                             className={styles["input"]}
                           />
 
@@ -129,7 +90,7 @@ const DraggableCustom: React.FC<DraggableProps> = (props) => {
                             {inputList.length !== 1 && (
                               <button
                                 className={styles["button"]}
-                                onClick={() => deleteItem(item.id)}
+                                onClick={() => handleRemoveClick(index)}
                               >
                                 <BiTrash />
                               </button>

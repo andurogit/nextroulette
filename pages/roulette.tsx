@@ -8,7 +8,6 @@ import {
   Draggable,
   type DragUpdate,
 } from "react-beautiful-dnd";
-import { BiGridVertical, BiPlus, BiTrash } from "react-icons/bi";
 
 interface InputItem {
   [key: string]: string;
@@ -24,60 +23,82 @@ const DraggableCustom = dynamic(() => import("@/components/customDraggable"), {
   ssr: false,
 });
 
+const defaultData = [
+  {
+    id: uuidv4(),
+    text: "한식",
+  },
+  {
+    id: uuidv4(),
+    text: "중식",
+  },
+  {
+    id: uuidv4(),
+    text: "일식",
+  },
+  {
+    id: uuidv4(),
+    text: "분식",
+  },
+  {
+    id: uuidv4(),
+    text: "양식",
+  },
+];
+
 function RouletteCust() {
-  const [inputList, setInputList] = useState<InputItem[]>([
-    {
-      id: uuidv4(),
-      text: "홍콩반점",
-    },
-    {
-      id: uuidv4(),
-      text: "참진-돈가스",
-    },
-    {
-      id: uuidv4(),
-      text: "진룽마라탕",
-    },
-    {
-      id: uuidv4(),
-      text: "규동",
-    },
-    {
-      id: uuidv4(),
-      text: "수라멘(송파)",
-    },
-    {
-      id: uuidv4(),
-      text: "필라멘(가락)",
-    },
-    {
-      id: uuidv4(),
-      text: "닭칼국수",
-    },
-  ]);
+  const [inputList, setInputList] = useState<InputItem[]>(defaultData);
 
-  // handle input change
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    const { name, value } = e.target;
-    const list = [...inputList];
-    list[index][name] = value;
-    setInputList(list);
-  };
+  useEffect(() => {
+    // 클라이언트 측에서만 실행되도록 제한
+    if (typeof window !== "undefined") {
+      const savedData = JSON.parse(localStorage.getItem("items") || "[]");
+      if (savedData.length > 0) {
+        setInputList(savedData);
+      }
+    }
+  }, []);
 
-  // handle click event of the Remove button
-  const handleRemoveClick = (index: number) => {
-    const list = [...inputList];
-    list.splice(index, 1);
-    setInputList(list);
-  };
+  // 스토리지에 데이터가 없을 경우 세팅
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedData = JSON.parse(localStorage.getItem("items") || "[]");
+      if (savedData.length == 0) {
+        localStorage.setItem("items", JSON.stringify(inputList));
+      }
+    }
+  }, [inputList]);
 
-  // handle click event of the Add button
-  const handleAddClick = () => {
-    setInputList([...inputList, { text: "", id: uuidv4() }]);
-  };
+  // const [inputList, setInputList] = useState<InputItem[]>([
+  //   {
+  //     id: uuidv4(),
+  //     text: "홍콩반점",
+  //   },
+  //   {
+  //     id: uuidv4(),
+  //     text: "참진-돈가스",
+  //   },
+  //   {
+  //     id: uuidv4(),
+  //     text: "진룽마라탕",
+  //   },
+  //   {
+  //     id: uuidv4(),
+  //     text: "규동",
+  //   },
+  //   {
+  //     id: uuidv4(),
+  //     text: "수라멘(송파)",
+  //   },
+  //   {
+  //     id: uuidv4(),
+  //     text: "필라멘(가락)",
+  //   },
+  //   {
+  //     id: uuidv4(),
+  //     text: "닭칼국수",
+  //   },
+  // ]);
 
   return (
     <div className={styles["main-form"]}>

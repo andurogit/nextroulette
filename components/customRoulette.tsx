@@ -101,13 +101,13 @@ const Roulette: React.FC<RouletteProps> = ({ data }) => {
         </button>
       </div>
       <br />
-      <button
+      {/* <button
         className={styles["prize-message"]}
         onClick={handleSpinClick}
         disabled={mustSpin}
       >
         {!mustSpin ? rouletteData[prizeNumber].completeOption : "돌리는 중..."}
-      </button>
+      </button> */}
     </>
   );
 };
