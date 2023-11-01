@@ -93,12 +93,12 @@ const Roulette: React.FC<RouletteProps> = ({ data }) => {
             setMustSpin(false);
           }}
         />
-        {/* <button
+        <button
           className={styles["button roulette-button"]}
           onClick={handleSpinClick}
         >
           돌려요🚀
-        </button> */}
+        </button>
       </div>
       <br />
       {/* <button
