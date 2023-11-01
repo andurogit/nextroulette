@@ -4,7 +4,7 @@ import {
   Droppable,
   type DragUpdate,
 } from "react-beautiful-dnd";
-import { BiGridVertical, BiTrash, BiPlus } from "react-icons/bi";
+import { BiGridVertical } from "react-icons/bi";
 import styles from "../styles/customRoulette.module.css";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect } from "react";
@@ -131,7 +131,7 @@ const DraggableCustom: React.FC<DraggableProps> = (props) => {
                                 className={styles["button"]}
                                 onClick={() => deleteItem(item.id)}
                               >
-                                <BiTrash />
+                                삭제
                               </button>
                             )}
                           </div>
@@ -149,9 +149,9 @@ const DraggableCustom: React.FC<DraggableProps> = (props) => {
       <button
         onClick={handleAddClick}
         style={{ marginLeft: "2.1rem" }}
-        className={styles["button"]}
+        className={styles["add-btn"]}
       >
-        <BiPlus />
+        추가
       </button>
     </div>
   );
